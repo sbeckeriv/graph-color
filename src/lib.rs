@@ -40,7 +40,6 @@ Ix: IndexType+Hash,
 
 #[cfg(test)]
 mod tests {
-
     use petgraph::graph::*;
     use std::ops::Index;
     use super::GraphColoring;
