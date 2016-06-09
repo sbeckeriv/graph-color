@@ -42,6 +42,7 @@ Ix: IndexType+Hash,
 mod tests {
 
     use petgraph::graph::*;
+    use std::ops::Index;
     use super::GraphColoring;
     #[test]
     fn it_works() {
@@ -55,6 +56,13 @@ mod tests {
                                (pg, fb), (pg, qc),
                                (qc, rand), (rand, libc), (qc, libc),
         ]);
-        println!("{:?}",deps.lazy_color());
+        let colors = deps.lazy_color();
+        println!("{:?}", colors);
+        for (key, value) in colors{
+            println!("Node: {:?} color: {}",
+                     deps.index(NodeIndex::new(key)),
+                     value);
+        }
+
     }
 }
